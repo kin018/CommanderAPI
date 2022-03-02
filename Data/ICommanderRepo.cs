@@ -10,8 +10,6 @@ namespace Commander.Data
     {
         bool SaveChanges();
 
-
-
         //give me a list of all command objects
         IEnumerable<Command> GetAllCommands();
         Command GetCommmandById(int id);//return a single command back to user by provided id 

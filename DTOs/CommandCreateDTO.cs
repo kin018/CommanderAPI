@@ -5,18 +5,14 @@ using System.Threading.Tasks;
 
 namespace Commander.DTOs
 {
-    public class CommandReadDTO
+    public class CommandCreateDTO
     {
-        public int Id { get; set; }
+        // public int Id { get; set; } Not needed since ID and Primary Key are being created by Database
 
         public string HowTo { get; set; }
 
         public string Line { get; set; }
 
-        // public string Platform { get; set; } Not needed for ReadDTO
-
-
+        public string Platform { get; set;  }// Would get error if not supplied 
     }
-
-
 }

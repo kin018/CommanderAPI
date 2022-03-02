@@ -4,10 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Commander.Data
+namespace Commander.Data//MOCKCOMMANDERREPO is not implemented.  Can be deleted all together if you want
 {
     public class MockCommanderRepo : ICommanderRepo //Implements ICommanderRepo interface
     {
+        public void CreateCommand(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Command> GetAllCommands()
         {
             var commands = new List<Command>
@@ -23,6 +28,11 @@ namespace Commander.Data
         public Command GetCommmandById(int id)
         {
             return new Command { Id = 0, HowTo = "Boil an egg", Line = "Boil Water", Platform= "Kettle & Pan" };
+        }
+
+        public bool SaveChanges()
+        {
+            throw new NotImplementedException();
         }
     }
 }
