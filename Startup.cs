@@ -40,6 +40,8 @@ namespace Commander
 
 
             //services.AddScoped<ICommanderRepo, MockCommanderRepo>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //Automapper through  Dependency Injection
+
             services.AddScoped<ICommanderRepo,SQLCommanderRepo>();
         }
 
