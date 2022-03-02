@@ -3,9 +3,9 @@ REST API using ASP.NET Core 3.1 while employing MVC, Representational state tran
 Repository Patterns, Dependency Injection, Entity Framework, Data Transfer Objects (DTOs), and AutoMapper
 to provide 6 API endpoints that allows user Create, Read Update and Delete resources. 
 
+##  STEPS
 
-**STEPS**
-_GET/READ_
+#### GET/READ
 Create Domain Model (Command)
 Build Repository Interface
 Implement Repository Interface (Mock Reposiory)
@@ -13,7 +13,7 @@ Create Controller (CommandsController)
 Create Get and Read API Endpoints
 Dependency Injection
 
-_ENTITY FRAMEWORK & DATABASE_
+#### ENTITY FRAMEWORK & DATABASE
 Set Up SQL Server App Login
 Entityframework Packages and Toolset
 Create Database Context (CommanderContext)
@@ -26,13 +26,13 @@ Create Migrations again and Run migrations against Database
 Add Data to Database
 Revisit DB Context in Repo
 
-_DATA TRANSFER OBJECTS AND ENDPOINT CREATION_
+#### DATA TRANSFER OBJECTS AND ENDPOINT CREATION
 AutoMapper Package & Startup Registration
 Create 1st DTO
 Create mapping Profile
 Update ActionResults for DTO use
 
-_PUT/PATCH/DELETE_
+#### PUT/PATCH/DELETE
 Update Repo for Creating Resources
 Create a New DTO (for Creating)
 Create 3rd API Endpoint to Create Resources
