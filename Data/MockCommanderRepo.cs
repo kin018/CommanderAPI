@@ -34,5 +34,10 @@ namespace Commander.Data//MOCKCOMMANDERREPO is not implemented.  Can be deleted 
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateCommand(Command cmd)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

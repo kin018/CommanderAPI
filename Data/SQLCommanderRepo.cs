@@ -39,5 +39,10 @@ namespace Commander.Data
         {
             return (_context.SaveChanges()>=0); //saves changes 
         }
+
+        public void UpdateCommand(Command cmd)
+        {
+            //Implemented by doing Nothing since it is handled by DBcontext
+        }
     }
 }

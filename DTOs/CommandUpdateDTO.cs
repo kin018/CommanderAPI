@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Commander.DTOs
 {
-    public class CommandDeleteDTO
+    public class CommandUpdateDTO
     {
     }
 }

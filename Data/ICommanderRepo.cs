@@ -14,5 +14,6 @@ namespace Commander.Data
         IEnumerable<Command> GetAllCommands();
         Command GetCommmandById(int id);//return a single command back to user by provided id 
         void CreateCommand(Command cmd);
+        void UpdateCommand(Command cmd);
     }
 }
