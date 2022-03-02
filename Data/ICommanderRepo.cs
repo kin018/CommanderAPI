@@ -8,11 +8,13 @@ namespace Commander.Data
 {
     public interface ICommanderRepo
     {
+        bool SaveChanges();
+
+
+
         //give me a list of all command objects
-       IEnumerable<Command> GetAllCommands();
-       Command GetCommmandById(int id);//return a single command back to user by provided id 
-
-
-
+        IEnumerable<Command> GetAllCommands();
+        Command GetCommmandById(int id);//return a single command back to user by provided id 
+        void CreateCommand(Command cmd);
     }
 }

@@ -37,7 +37,7 @@ namespace Commander.Controllers
             var commandItem = _repository.GetCommmandById(id);
             if (commandItem != null) //checks if commmandItem is null or not
             {
-                return Ok(_mapper.Map<CommandReadDTO>(commandItem));
+                return Ok(_mapper.Map<CommandReadDTO>(commandItem)); 
             }
             return NotFound(); 
         }
