@@ -12,7 +12,8 @@ namespace Commander.Profiles
     {
         public CommandsProfile()
         {
-            CreateMap<Command, CommandReadDTO>();
+            CreateMap<Command, CommandReadDTO>();//Source-> TargetDestination
+            CreateMap<CommandCreateDTO, Command>();
         }
     }
 }

@@ -10,22 +10,22 @@ using System.Threading.Tasks;
 
 namespace Commander.Controllers
 {
-    
+
     [Route("api/commands")]
     [ApiController]
-    public class CommandsController: ControllerBase //inheritance with base controller 
+    public class CommandsController : ControllerBase //inheritance with base controller 
     {
         private readonly ICommanderRepo _repository;
         private readonly IMapper _mapper;
 
         public CommandsController(ICommanderRepo repository, IMapper mapper)
         {
-            _repository =repository;
+            _repository = repository;
             _mapper = mapper;
         }
 
         [HttpGet] //GET api/commands
-        public ActionResult <IEnumerable<Command>> GetAllCommands()
+        public ActionResult<IEnumerable<Command>> GetAllCommands()
         {
             var commandItems = _repository.GetAllCommands();
             return Ok(commandItems);
@@ -37,9 +37,18 @@ namespace Commander.Controllers
             var commandItem = _repository.GetCommmandById(id);
             if (commandItem != null) //checks if commmandItem is null or not
             {
-                return Ok(_mapper.Map<CommandReadDTO>(commandItem)); 
+                return Ok(_mapper.Map<CommandReadDTO>(commandItem));
             }
-            return NotFound(); 
+            return NotFound();
+        }
+
+        [HttpPost] //POST api/commands
+        public ActionResult<CommandReadDTO> CreateCommand(CommandCreateDTO commandCreateDTO)// returns back a ReadDTO called CreateCommand that takes as an input a commandCreateDTO
+        {
+            var commandModel = _mapper.Map<Command>(commandCreateDTO);
+            _repository.CreateCommand(commandModel);
+
+            return Ok(commandModel);
         }
     }
 }
