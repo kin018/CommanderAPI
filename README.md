@@ -14,8 +14,8 @@ to provide 6 API endpoints that allows user Create, Read Update and Delete resou
 ###### Dependency Injection
 
 #### ENTITY FRAMEWORK & DATABASE
-###### Set Up SQL Server App Login
-###### Entityframework Packages and Toolset
+- Set Up SQL Server App Login
+* Entityframework Packages and Toolset
 ###### Create Database Context (CommanderContext)
 ###### Connect using Database connection String
 ###### Register DB Context in Startup
