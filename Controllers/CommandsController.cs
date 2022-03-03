@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Commander.Controllers
 {
-
     [Route("api/commands")]
     [ApiController]
     public class CommandsController : ControllerBase //inheritance with base controller 
@@ -63,17 +62,19 @@ namespace Commander.Controllers
             {
                 return NotFound();
             }
+
             _mapper.Map(commandUpdateDTO, commandModelFromRepo); //both contain data so we use this syntax of existing source to new destination object(from UpdateDTO to commmandModelFromRepo to be updated and tracked by dbcontext )
 
             _repository.UpdateCommand(commandModelFromRepo); //call update method to repo and supply in commandModelFromRepo because other implementations may require this 
 
-            _repository.SaveChanges();
+            _repository.SaveChanges(); //saves changes to DB
 
             return NoContent();
            
-
-
         }
+
+       // [HttpPatch] //PATCH
+
 
     }
 }
