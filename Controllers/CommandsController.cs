@@ -2,6 +2,7 @@
 using Commander.Data;
 using Commander.DTOs;
 using Commander.Models;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace Commander.Controllers
         [HttpPut("{id}")] //PUT api/commands/{id}
         public ActionResult UpdateCommand(int id, CommandUpdateDTO commandUpdateDTO)
         {
-            //placeholder to check if resource exiost or not
+            //placeholder to check if resource exist or not
             var commandModelFromRepo = _repository.GetCommmandById(id);
             if (commandModelFromRepo == null)
             {
@@ -73,7 +74,33 @@ namespace Commander.Controllers
            
         }
 
-       // [HttpPatch] //PATCH
+       [HttpPatch("{id}")] //PATCH api/commands/{id}
+
+       //Get Patch document from our request-> Check resource to update from repo->Generate an empty command on the DTO and use Data from repository model-> validate with if statement-> apply patch
+        public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<CommandUpdateDTO> patchDoc)
+        {
+            var commandModelFromRepo = _repository.GetCommmandById(id);
+            if(commandModelFromRepo == null)
+            {
+                return NotFound();            
+            }
+
+            var commandToPatch = _mapper.Map<CommandUpdateDTO>(commandModelFromRepo); //applies patch to this variable from the source commandModelFromRepo
+            patchDoc.ApplyTo(commandToPatch, ModelState); 
+
+            if(!TryValidateModel(commandToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+            _mapper.Map(commandToPatch, commandModelFromRepo);
+
+            _repository.UpdateCommand(commandModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
 
 
     }
