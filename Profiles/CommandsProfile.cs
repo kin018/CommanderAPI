@@ -15,6 +15,7 @@ namespace Commander.Profiles
             CreateMap<Command, CommandReadDTO>();//Source-> TargetDestination
             CreateMap<CommandCreateDTO, Command>();//Mapping from CommandReadDTO to Command Model
             CreateMap<CommandUpdateDTO,Command>();//Mapping from CommandUpdateDTO to Command Model
+            CreateMap<Command, CommandUpdateDTO>();//Mapping from Command Model to CommandUpdateDTO(used for PATCH) *NOTE this needs to be explicity created even though previous line of code is mapped that way*
         }
     }
 }
