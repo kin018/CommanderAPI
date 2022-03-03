@@ -41,12 +41,12 @@ namespace Commander.Data
 
         public Command GetCommmandById(int id)
         {
-                return _context.Commands.FirstOrDefault(p => p.Id == id);
+            return _context.Commands.FirstOrDefault(p => p.Id == id);
         }
 
         public bool SaveChanges()
         {
-            return (_context.SaveChanges()>=0); //saves changes 
+            return (_context.SaveChanges() >= 0); //saves changes 
         }
 
         public void UpdateCommand(Command cmd)

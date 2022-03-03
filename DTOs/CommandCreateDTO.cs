@@ -17,6 +17,6 @@ namespace Commander.DTOs
         public string Line { get; set; }
 
         [Required]
-        public string Platform { get; set;  }// Would get error if not supplied 
+        public string Platform { get; set; }// Would get error if not supplied 
     }
 }

@@ -51,7 +51,7 @@ namespace Commander.Controllers
 
             var commandReadDTO = _mapper.Map<CommandReadDTO>(commandModel);
 
-            return CreatedAtRoute(nameof(GetCommandById), new {Id = commandReadDTO.Id }, commandReadDTO); //CreatedAtRoute
+            return CreatedAtRoute(nameof(GetCommandById), new { Id = commandReadDTO.Id }, commandReadDTO); //CreatedAtRoute
         }
 
         [HttpPut("{id}")] //PUT api/commands/{id}
@@ -71,24 +71,23 @@ namespace Commander.Controllers
             _repository.SaveChanges(); //saves changes to DB
 
             return NoContent();
-           
         }
 
-       [HttpPatch("{id}")] //PATCH api/commands/{id}
+        [HttpPatch("{id}")] //PATCH api/commands/{id}
 
-       //Get Patch document from our request-> Check resource to update from repo->Generate an empty command on the DTO and use Data from repository model-> validate with if statement-> apply patch
+        //Get Patch document from our request-> Check resource to update from repo->Generate an empty command on the DTO and use Data from repository model-> validate with if statement-> apply patch
         public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<CommandUpdateDTO> patchDoc)
         {
             var commandModelFromRepo = _repository.GetCommmandById(id);
-            if(commandModelFromRepo == null)
+            if (commandModelFromRepo == null)
             {
-                return NotFound();            
+                return NotFound();
             }
 
             var commandToPatch = _mapper.Map<CommandUpdateDTO>(commandModelFromRepo); //applies patch to this variable from the source commandModelFromRepo
-            patchDoc.ApplyTo(commandToPatch, ModelState); 
+            patchDoc.ApplyTo(commandToPatch, ModelState);
 
-            if(!TryValidateModel(commandToPatch))
+            if (!TryValidateModel(commandToPatch))
             {
                 return ValidationProblem(ModelState);
             }
@@ -114,7 +113,5 @@ namespace Commander.Controllers
 
             return NoContent();
         }
-
-
     }
 }

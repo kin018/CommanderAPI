@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Commander.DTOs
 {
     public class CommandUpdateDTO
-    {        
+    {
         [Required]
         [MaxLength(250)]
         public string HowTo { get; set; }

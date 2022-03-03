@@ -32,10 +32,11 @@ namespace Commander
         {
             services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
 
-            services.AddControllers().AddNewtonsoftJson(s => {
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();//for patcj
-                });
-            
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Commander", Version = "v1" });
@@ -45,7 +46,7 @@ namespace Commander
             //services.AddScoped<ICommanderRepo, MockCommanderRepo>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); //Automapper through  Dependency Injection
 
-            services.AddScoped<ICommanderRepo,SQLCommanderRepo>();
+            services.AddScoped<ICommanderRepo, SQLCommanderRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
