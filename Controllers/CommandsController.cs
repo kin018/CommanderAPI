@@ -53,5 +53,19 @@ namespace Commander.Controllers
 
             return CreatedAtRoute(nameof(GetCommandById), new {Id = commandReadDTO.Id }, commandReadDTO); //CreatedAtRoute
         }
+
+        [HttpPut("{id}")] //PUT api/commands/{id}
+        public ActionResult UpdateCommand(int id, CommandUpdateDTO commandUpdateDTO)
+        {
+            //placeholder to check if resource exiost or not
+            var commandModelFromRepo = _repository.GetCommmandById(id);
+            if (commandModelFromRepo == null)
+            {
+                return NotFound();
+            }
+
+            _mapper.Map(commandUpdateDTO, commandModelFromRepo); //both contain data so we use this syntax of existing source to new destination object(from UpdateDTO to commmandModelFromRepo to be updated and tracked by dbcontext )
+        }
+        
     }
 }

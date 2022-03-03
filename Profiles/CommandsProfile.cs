@@ -13,7 +13,8 @@ namespace Commander.Profiles
         public CommandsProfile()
         {
             CreateMap<Command, CommandReadDTO>();//Source-> TargetDestination
-            CreateMap<CommandCreateDTO, Command>();
+            CreateMap<CommandCreateDTO, Command>();//Mapping from CommandReadDTO to Command Model
+            CreateMap<CommandUpdateDTO,Command>();//Mapping from CommandUpdateDTO to Command Model
         }
     }
 }
